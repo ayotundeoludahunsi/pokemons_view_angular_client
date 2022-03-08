@@ -1,0 +1,1 @@
+# pokemons_view_angular_client
