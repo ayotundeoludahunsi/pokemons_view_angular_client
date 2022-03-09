@@ -1,39 +1,39 @@
-# PokéAPI Directory 
+## Basic Pokémon directory App
 
-## Prerequisite
-This task needs to be completed using both Angular and Bootstrap (already included in package.json).  
+A Pokémon directory allowing users to browse all available Pokémons and view each in greater detail.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+	
 
-You can install additional packages if you desire.
+## Code Logic
 
-There are no wireframes or designs attached, use your own creative flair!
-
-## Brief
-Using the [PokéAPI](https://pokeapi.co/docs/v2) we would like you to create a Pokémon directory allowing users to browse all available Pokémon.
-
-### Minimum Requirements
-Build an SPA to list all available Pokémon and view each in greater detail.
-
-#### Step 1
- Use the [GET https://pokeapi.co/api/v2/pokemon/{id or name}/](https://pokeapi.co/docs/v2#pokemon) to build a page that will list all available Pokémon.
+* The App contains a List page that shows 50 Pokemons at a glance and a Detail page showing more properties of a particular Pokemon. 
+* I implemented pagination, the app loads the first 50 items, and uses the Previous/Next buttons to navigate more items. 
+* I added a search feature to the list page with an open source npm plugin (ngx-filter-pipe).
+* I extended the requirement to call an additional api route to get the Pokemon color.
  
-_**Hint**: This API can be called without an `{id or name}` to return a paginated resource list, see more information on that [here](https://pokeapi.co/docs/v2#resource-listspagination-section)._
 
-- This page should allow the user to navigate through the result in blocks of 50.
-- This page should be reloadable and shareable. For example, sharing or reloading `https://myapp.co.uk/pokemon-directory?page=4` should hydrate the UI correctly showing the Pokémon results 150-200.
+## API
 
-#### Step 2
-Use the [GET https://pokeapi.co/api/v2/pokemon/{id or name}/](https://pokeapi.co/docs/v2#pokemon) to build a page displaying information about the Pokémon.
-- This page should be accessed by clicking a Pokémon result from step 1.
-- This page should be reloadable and shareable. For example, sharing or reloading `https://myapp.co.uk/pokemon/{id}` should hydrate the UI correctly with the details for the Pokémons ID in the app URL.
+* The App uses the [PokéAPI](https://pokeapi.co/docs/v2) to get a list of Pokemons.
+* And also the detailed Pokemon from [GET https://pokeapi.co/api/v2/pokemon/{id or name}/](https://pokeapi.co/docs/v2#pokemon).
 
-### Non Mandatory Requirements
-If you're enjoying the task and want to show off, use any other additional PokéAPI(s) to add more functionality and/or information to your application. 
+    
+## Technologies
+
+Project uses:
+* Angular
+* Boostrap
 
 
-### Getting Started
-#### Install Dependencies
-`npm install`
-#### Serve Project
-`ng serve`
+## Setup
 
-This is the easiest way to run and develop your app locally.
+- Install angular cli and npm locally.
+- Clone/download the project and launch locally using visual studio code or other IDEs.
+- Open terminal on the project directory and run the command `npm install`.
+- Run commnd `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically launch the app in the default browser.
+
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
