@@ -15,7 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## API
 
 * The App uses the [PokéAPI](https://pokeapi.co/docs/v2) to get a list of Pokemons.
-* And also the detailed Pokemon from [GET https://pokeapi.co/api/v2/pokemon/{id or name}/](https://pokeapi.co/docs/v2#pokemon).
+* And gets a Pokemon details from [GET https://pokeapi.co/api/v2/pokemon/{id or name}/](https://pokeapi.co/docs/v2#pokemon).
 
     
 ## Technologies
