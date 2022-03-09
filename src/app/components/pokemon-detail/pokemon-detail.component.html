@@ -1,0 +1,126 @@
+<div class="page-body">
+
+
+  <div class="container pb-3">
+
+    <!--Back button section-->
+    <div class="row pt-2">
+      <div class="col-md-12">
+        <button class="btn btn-outline btn-default" (click)="navigateToListPage()"><i class="bi bi-caret-left-fill"></i>
+          Back</button>
+      </div>
+    </div>
+    <!--end back button section-->
+
+    <ng-container *ngIf="isPokemonFound && pokemon; else error_content">
+      <!--Pokemon section-->
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="row pt-2 mt-1">
+            <div class="col-md-3 center-left">
+              <div class="text-center">
+                <img class="img-pokemon rounded-circle"
+                  [ngStyle]="{'background-color':  pokemon?.speciesDetails?.color?.name}"
+                  src="{{sprite_image_url}}{{pokemon?.id}}.png" alt="{{pokemon?.name}}">
+                <h1>{{pokemon?.name | titlecase}}</h1>
+                <span *ngFor="let type of pokemon?.types" class="badge border rounded-pill me-1 bg-info">
+                  {{type?.type?.name | titlecase}}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-2 pt-3 text-center">
+              <span>
+                <strong>{{pokemon?.height}} m</strong>
+                <hr class="m-0 p-0" />
+                <small class="text-muted">Height</small>
+              </span>
+              <br /><br />
+              <span>
+                <strong>{{pokemon?.weight}} kg</strong>
+                <hr class="m-0 p-0" />
+                <small class="text-muted">Weight</small>
+              </span>
+              <br /><br />
+              <span>
+                <strong> {{pokemon?.base_experience}}</strong>
+                <hr class="m-0 p-0" />
+                <small></small><small class="text-muted">Experience</small>
+              </span>
+            </div>
+
+             <!-- pokemon abilities section -->
+            <div class="col-md-4 offset-md-3 pt-3">
+              <h4 class="card-title">Abilities</h4>
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let ability of pokemon?.abilities" class="list-group-item">
+                  <i class="bi bi-caret-right-fill text-secondary"></i>{{ability?.ability?.name | titlecase}}
+                </li>
+              </ul>
+            </div>
+            
+             <!-- end pokemon abilities section -->
+          </div>
+        </div>
+      </div>
+
+      <!-- stats section -->
+      <div class="card mt-3 mb-0 pb-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="card-title">Stats</h4>
+              <table class="table table-sm">
+                <tbody>
+                  <tr *ngFor="let stat of pokemon?.stats; let i = index">
+                    <td><i class="bi bi-distribute-horizontal text-{{progress_bg_colors[i]}}"></i>
+                      &nbsp;
+                      {{stat?.stat?.name | titlecase}}
+                    </td>
+                    <td class="text-right pr-3"><em class="bolder">{{stat?.base_stat}}</em></td>
+                    <td class="td-progress">
+                      <div class="progress">
+                        <div class="progress-bar bg-{{progress_bg_colors[i]}}" role="progressbar"
+                          [style.width]="stat.base_stat + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- moves section -->
+      <div class="card mt-3 mb-0 pb-0">
+        <div class="card-body">
+          <h4 class="card-title">Moves <span class="items-count text-muted">({{pokemon?.moves?.length}})</span></h4>
+        </div>
+        <ul>
+          <div class="row">
+            <li class="col-md-3" *ngFor="let move of pokemon?.moves">
+              {{move?.move?.name | titlecase}}
+            </li>
+          </div>
+        </ul>
+      </div>
+       <!-- end moves section -->
+    </ng-container>
+  </div>
+
+   <!-- error message section -->
+  <ng-template #error_content>
+    <div class="card mt-3" [hidden]="isLoading">
+      <div class="card-body text-center">
+        <div class="row bg-white">
+          <div class="col-sm-12">
+            <p class="text-danger">Whoops...it appears this pokemon is not found. Please check and try again.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+</div>
